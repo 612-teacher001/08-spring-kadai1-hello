@@ -25,15 +25,17 @@ public class LoginController {
 		// 取得したIDとパスワードによる認証
 		String nextPage = "";
 		if (USER_ID.equals(id) && USER_PASSWORD.equals(password)) {
+			// 認証に成功した場合
 			nextPage = "index";
 		} else {
-			String message = "";
+			// 認証に失敗した場合：本来は以下のようなエラーメッセージは望ましくないが、その理由を考えてみよう！
+			String errorMessage = "";
 			if (!USER_ID.equals(id)) {
-				message = "ユーザIDが一致しませんでした";
+				errorMessage = "ユーザIDが一致しませんでした";
 			} else {
-				message = "パスワードが一致しませんでした";
+				errorMessage = "パスワードが一致しませんでした";
 			}
-			model.addAttribute("message", message);
+			model.addAttribute("message", errorMessage);
 			nextPage = "login";
 		}
 		
