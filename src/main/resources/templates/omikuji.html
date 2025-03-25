@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>おみくじ</title>
+</head>
+<body>
+	<form action="/omikuji" method="post">
+		<button>おみくじを引く</button>
+	</form>
+	<p th:text="${result}"></p><!-- とくにpタグを使う必要はない：ほかのブロック要素を生成するタグなら可 -->
+</body>
+</html>
