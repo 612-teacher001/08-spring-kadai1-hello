@@ -15,10 +15,19 @@ public class HellloController {
 					   @RequestParam String hobby, // 趣味
 					   Model model // 遷移先画面に引き継ぐデータがある場合
 					   ) {
+		// 年齢によるメッセージの分岐
+		String ageMessage = "";
+		if (age < 18) {
+			ageMessage = "未成年です";
+		} else {
+			ageMessage = "成人してから" + (age - 18) + "年経ちました";
+		}
+		
 		// 次画面へのデータの引き継ぎ
 		model.addAttribute("name", name);
-		model.addAttribute("age", age);
+		model.addAttribute("age", ageMessage); // 年齢を年齢によるメッセージに変更
 		model.addAttribute("hobby", hobby);
+		
 		// 画面遷移
 		return "hello";
 	}
